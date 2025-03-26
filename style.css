@@ -1,0 +1,226 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(135deg, #111, #222);
+    color: #fff;
+    font-family: 'Noto Serif SC', serif;
+    min-height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.03) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.container {
+    text-align: center;
+    width: 100%;
+    padding: 20px;
+    z-index: 1;
+    position: relative;
+}
+
+.title {
+    font-size: 4.5rem;
+    font-family: 'Ma Shan Zheng', cursive;
+    color: transparent;
+    background: linear-gradient(45deg, #ff5e62, #ff9966, #feb47b, #ffee99, #91eae4, #86a8e7, #7f7fd5);
+    -webkit-background-clip: text;
+    background-clip: text;
+    background-size: 400% 400%;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+    margin-bottom: 0.5rem;
+    animation: gradient 15s ease infinite, float 6s ease-in-out infinite;
+}
+
+.subtitle {
+    font-size: 1.5rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 3rem;
+    letter-spacing: 2px;
+    animation: pulse 3s infinite;
+}
+
+.flower-garden {
+    width: 100%;
+    height: 60vh;
+    position: relative;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+}
+
+.flower {
+    position: absolute;
+    transform-origin: center bottom;
+    animation: sway 5s ease-in-out infinite;
+    text-shadow: 0 0 8px currentColor;
+}
+
+/* 花苞样式 */
+.flower.bud {
+    cursor: pointer;
+}
+
+.bud-center {
+    transition: all 0.3s ease;
+    animation: budPulse 3s ease-in-out infinite;
+}
+
+.petal {
+    position: absolute;
+    font-size: 2rem;
+    opacity: 0.9;
+    animation: spin 20s linear infinite;
+    text-shadow: 0 0 5px currentColor, 0 0 10px currentColor;
+}
+
+.message {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(5px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.love-message {
+    font-size: 1.3rem;
+    line-height: 1.6;
+    color: #fff;
+    text-shadow: 0 0 5px rgba(255, 88, 150, 0.5);
+    opacity: 0;
+    animation: fadeIn 3s forwards;
+}
+
+.controls {
+    margin-top: 2rem;
+    display: flex;
+    gap: 1rem;
+    z-index: 10;
+}
+
+button {
+    background: linear-gradient(45deg, #ff3366, #ff6b6b);
+    border: none;
+    padding: 10px 20px;
+    color: white;
+    border-radius: 50px;
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(255, 51, 102, 0.4);
+}
+
+button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 7px 20px rgba(255, 51, 102, 0.6);
+}
+
+button:active {
+    transform: translateY(1px);
+}
+
+/* 莎士比亚引言样式 */
+.shakespeare-quote {
+    animation: glow 3s ease infinite;
+}
+
+@keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0px); }
+}
+
+@keyframes pulse {
+    0% { opacity: 0.6; }
+    50% { opacity: 1; }
+    100% { opacity: 0.6; }
+}
+
+@keyframes sway {
+    0% { transform: rotate(-5deg); }
+    50% { transform: rotate(5deg); }
+    100% { transform: rotate(-5deg); }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@keyframes bloom {
+    0% { transform: scale(0); opacity: 0; }
+    50% { opacity: 1; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* 花苞呼吸效果 */
+@keyframes budPulse {
+    0% { transform: translate(-50%, -50%) scale(1); opacity: 0.7; }
+    50% { transform: translate(-50%, -50%) scale(1.1); opacity: 1; }
+    100% { transform: translate(-50%, -50%) scale(1); opacity: 0.7; }
+}
+
+/* 所有花朵被打开后的庆祝动画 */
+@keyframes celebrate {
+    0% { transform: scale(1) rotate(0deg); }
+    25% { transform: scale(1.2) rotate(5deg); }
+    50% { transform: scale(1) rotate(0deg); }
+    75% { transform: scale(1.2) rotate(-5deg); }
+    100% { transform: scale(1) rotate(0deg); }
+}
+
+/* 引言发光效果 */
+@keyframes glow {
+    0% { box-shadow: 0 0 20px rgba(255, 255, 255, 0.3); }
+    50% { box-shadow: 0 0 40px rgba(255, 255, 255, 0.6); }
+    100% { box-shadow: 0 0 20px rgba(255, 255, 255, 0.3); }
+}
+
+@media (max-width: 768px) {
+    .title {
+        font-size: 3rem;
+    }
+    
+    .subtitle {
+        font-size: 1.2rem;
+    }
+    
+    .flower-garden {
+        height: 50vh;
+    }
+} 
